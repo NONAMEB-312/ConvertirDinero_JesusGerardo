@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Examen U2</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    label, select, input {
+      display: block;
+      margin: 10px 0;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h2>Conversor de Moneda</h2>
+
+  <label for="cantidad">Cantidad:</label>
+  <input type="number" id="cantidad" placeholder="Ingresa la cantidad" required>
+
+  <label for="conversion">Tipo de conversión:</label>
+  <select id="conversion">
+    <option value="mxn-usd">Pesos a Dólares</option>
+    <option value="mxn-eur">Pesos a Euros</option>
+    <option value="usd-mxn">Dólares a Pesos</option>
+    <option value="eur-mxn">Euros a Pesos</option>
+  </select>
+
+  <button onclick="convertir()">Convertir</button>
+
+  <h3 id="resultado"></h3>
+
+  <script>
+    function convertir() {
+      const cantidad = parseFloat(document.getElementById('cantidad').value);
+      const tipo = document.getElementById('conversion').value;
+      const resultado = document.getElementById('resultado');
+
+      if (isNaN(cantidad) || cantidad < 0) {
+        resultado.textContent = 'Por favor, ingresa una cantidad válida.';
+        return;
+      }
+
+      let conversion = 0;
+
+      switch (tipo) {
+        case 'mxn-usd':
+          conversion = cantidad / 17.5;
+          resultado.textContent = `${cantidad} MXN = ${conversion.toFixed(2)} USD`;
+          break;
+        case 'mxn-eur':
+          conversion = cantidad / 19.2;
+          resultado.textContent = `${cantidad} MXN = ${conversion.toFixed(2)} EUR`;
+          break;
+        case 'usd-mxn':
+          conversion = cantidad * 17.5;
+          resultado.textContent = `${cantidad} USD = ${conversion.toFixed(2)} MXN`;
+          break;
+        case 'eur-mxn':
+          conversion = cantidad * 19.2;
+          resultado.textContent = `${cantidad} EUR = ${conversion.toFixed(2)} MXN`;
+          break;
+        default:
+          resultado.textContent = 'Conversión no válida.';
+      }
+    }
+  </script>
+</body>
+</html>
