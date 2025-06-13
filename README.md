@@ -1,1 +1,1 @@
-# ConvertirDinero_JesusGerardo
+# ConvertirDinero_JesusGerardo el proyecto es sobre conversiones de moneda, las tecnologias utilizadas fueron javascript, Jira y Github, se ingresa el monto de la moneda y se selecciona el tipo de conversion, para luego dale a convertir y aparecerá la convrsion debajo
